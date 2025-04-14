@@ -4,9 +4,13 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from "../../images/logo.png";
 
-const NavBarItem = ({ title, to, classprops }) => (
+const NavBarItem = ({ title, to, classprops, external }) => (
   <li className={`mx-4 cursor-pointer ${classprops}`}>
-    <Link to={to}>{title}</Link> {/* Wrap title with Link */}
+    {external ? (
+      <a href={to} target="_blank" rel="noopener noreferrer">{title}</a> // External link
+    ) : (
+      <Link to={to}>{title}</Link> // Internal link
+    )}
   </li>
 );
 
@@ -14,22 +18,26 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
   const location = useLocation();
 
-  // Updated navItems with 'Tutorials' link pointing to '/tutorial'
   const navItems = [
-    { title: "BlockExplorer", to: "/" },
-    { title: "Tutorials", to: "/tutorial" }, // Link to the tutorial page
-    { title: "Wallets", to: "/wallets" },
+    { title: "BlockExplorer", to: "https://trust-tx-block-explorer.vercel.app", external: true }, // External link
+    { title: "Tutorials", to: "/tutorial", external: false }, // Internal link
+    { title: "Wallets", to: "/wallets", external: false }, // Internal link (inactive for now)
   ];
 
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center px-4 py-3  top-0 z-50 bg-transparent ">
+    <nav className="w-full flex md:justify-center justify-between items-center px-4 py-3 top-0 z-50 bg-transparent">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
 
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {navItems.map((item, index) => (
-          <NavBarItem key={item.title + index} title={item.title} to={item.to} />
+          <NavBarItem
+            key={item.title + index}
+            title={item.title}
+            to={item.to}
+            external={item.external}
+          />
         ))}
 
         {location.pathname !== "/login" && (
@@ -69,6 +77,7 @@ const Navbar = () => {
                 key={item.title + index}
                 title={item.title}
                 to={item.to}
+                external={item.external}
                 classprops="my-2 text-lg"
               />
             ))}
