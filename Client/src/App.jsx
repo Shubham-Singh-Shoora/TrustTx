@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Navbar, Services, Footer, Transaction, Welcome } from './Components';
-import Login from './Pages/Login'; 
+import Login from './Pages/Login';
 import Tutorial from './Pages/Tutorial';
+import WalletGuide from './Pages/Wallet'; // Import the new Wallet component
 import "./index.css";
 
 const AppContent = () => {
@@ -16,8 +17,8 @@ const AppContent = () => {
       {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
 
       <Routes>
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
             <>
               <Welcome />
@@ -25,10 +26,11 @@ const AppContent = () => {
               <Transaction />
               <Footer />
             </>
-          } 
+          }
         />
         <Route path="/login" element={<><Login /></>} />
-        <Route path="/tutorial" element={<Tutorial />} /> 
+        <Route path="/tutorial" element={<Tutorial />} />
+        <Route path="/wallets" element={<WalletGuide />} />
       </Routes>
     </div>
   );
