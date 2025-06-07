@@ -6,6 +6,8 @@ import metamaskDownload from '../assets/wallet/metamask-download.png';
 import metamaskCreate from '../assets/wallet/metamask-create.png';
 import metamaskNetwork from '../assets/wallet/metamask-network.png';
 import metamaskSettings from '../assets/wallet/metamask-settings.png';
+// Import a default logo for fallback
+import logo from '../../images/logo.png'; // Adjust path as needed
 
 const WalletGuide = () => {
     const steps = [
@@ -84,12 +86,12 @@ const WalletGuide = () => {
                             <p className="text-white mb-6">{step.content}</p>
                             <div className="w-full h-60 overflow-hidden rounded-lg">
                                 <img
-                                    src={`/images/wallet/${step.image}`}
+                                    src={step.image} // Use the imported image directly
                                     alt={step.title}
                                     className="w-full h-full object-contain"
                                     onError={(e) => {
                                         e.target.onerror = null;
-                                        e.target.src = "/images/logo.png"; // Fallback to your existing logo if image not found
+                                        e.target.src = logo; // Use imported logo as fallback
                                     }}
                                 />
                             </div>
