@@ -2,6 +2,10 @@ import React from 'react';
 import { AiOutlineDownload, AiOutlineCheck, AiOutlineWallet, AiOutlineChrome } from 'react-icons/ai';
 import { SiEthereum, SiFirefox, SiBrave } from 'react-icons/si';
 import { FiSettings } from 'react-icons/fi';
+import metamaskDownload from '../assets/wallet/metamask-download.png';
+import metamaskCreate from '../assets/wallet/metamask-create.png';
+import metamaskNetwork from '../assets/wallet/metamask-network.png';
+import metamaskSettings from '../assets/wallet/metamask-settings.png';
 
 const WalletGuide = () => {
     const steps = [
@@ -9,25 +13,25 @@ const WalletGuide = () => {
             title: 'Download and Install MetaMask',
             content: 'MetaMask is a cryptocurrency wallet available as a browser extension that allows you to interact with the Ethereum blockchain. Download it from the official website or your browser\'s extension store.',
             icon: <AiOutlineDownload fontSize={30} className="text-white" />,
-            image: 'metamask-download.png'
+            image: metamaskDownload
         },
         {
             title: 'Create or Import a Wallet',
             content: 'After installation, you can create a new wallet or import an existing one using your seed phrase. Make sure to store your seed phrase securely as it\'s the key to recovering your wallet.',
             icon: <AiOutlineWallet fontSize={30} className="text-white" />,
-            image: 'metamask-create.png'
+            image: metamaskCreate
         },
         {
             title: 'Connect to Ethereum Network',
             content: 'MetaMask connects to Ethereum Mainnet by default. You can switch to other networks like testnets (Rinkeby, Goerli) or custom networks in the network dropdown menu at the top of the extension.',
             icon: <SiEthereum fontSize={30} className="text-white" />,
-            image: 'metamask-network.png'
+            image: metamaskNetwork
         },
         {
             title: 'Configure Settings (Optional)',
             content: 'You can customize gas fees, transaction speed, and other settings in MetaMask for better control over your transactions.',
             icon: <FiSettings fontSize={30} className="text-white" />,
-            image: 'metamask-settings.png'
+            image: metamaskSettings
         }
     ];
 
